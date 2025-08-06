@@ -8,6 +8,7 @@
   cryptography,
   fetchFromGitHub,
   pytest-aiohttp,
+  pytest-codspeed,
   pytestCheckHook,
   pythonAtLeast,
   pythonOlder,
@@ -39,6 +40,7 @@ buildPythonPackage rec {
 
   nativeCheckInputs = [
     pytest-aiohttp
+    pytest-codspeed
     pytestCheckHook
   ];
 
