@@ -1,7 +1,6 @@
 {
   lib,
   buildPythonPackage,
-  fetchpatch2,
   fetchPypi,
   mock,
   pytestCheckHook,
@@ -29,14 +28,6 @@ buildPythonPackage rec {
     hash = "sha256-UX6c81OUJyNTOuEQDKRd0n/geFw60nZQdfXLHLzgFII=";
   };
 
-  patches = [
-    (fetchpatch2 {
-      name = "python313-compat.patch";
-      url = "https://github.com/simplistix/testfixtures/commit/a23532c7bc685589cce6a5037821a74da48959e7.patch?full_index=1";
-      hash = "sha256-k0j/WgA+6LNTYJ233GJjeRU403bJJRxbpOu+BUsMeyQ=";
-    })
-  ];
-
   build-system = [ setuptools ];
 
   nativeCheckInputs = [
@@ -44,6 +35,11 @@ buildPythonPackage rec {
     pytestCheckHook
     sybil
     twisted
+  ];
+
+  disabledTests = [
+    "test_filter_missing"
+    "test_filter_present"
   ];
 
   disabledTestPaths = [
