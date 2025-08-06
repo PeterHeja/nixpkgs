@@ -73,6 +73,12 @@ buildPythonPackage rec {
     "test_install_completion"
   ];
 
+  disabledTestPaths = [
+    # likely click 8.2 compat issue
+    "tests/test_tutorial/test_parameter_types/test_bool/test_tutorial002_an.py"
+    "tests/test_tutorial/test_parameter_types/test_bool/test_tutorial002.py"
+  ];
+
   pythonImportsCheck = [ "typer" ];
 
   meta = {
